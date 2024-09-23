@@ -5,9 +5,10 @@ Student Number:  155142227
 Student Email:  kbyju@myseneca.ca
 Date Created:  23 September 2024
 
-GITHUB URL:  
-VERCEL URL:   
-
+GITHUB URL:  https://github.com/kavya123-byju/new-rep.git
+VERCEL URL:  web322assignments-five.vercel.app
+            web322assignments-git-master-kavya-byjus-projects.vercel.app
+            web322assignments-cgcisxk0q-kavya-byjus-projects.vercel.app
 ### Technology Stack
 
 **Frontend**:    

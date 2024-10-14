@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "title": "Clothing in Fall",
+        "author": "Kavya Byju",
+        "category": "Clothing",
+        "content": "Exploring trending fall clothing fashion for college outfits.",
+        "published": false
+    },
+    {
+        "id": 2,
+        "title": "Coding for Beginners",
+        "author": "Kavya Byju",
+        "category": "Coding",
+        "content": "A comprehensive guide for beginners to start their journey in coding.",
+        "published": false
+    }
+]

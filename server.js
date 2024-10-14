@@ -1,13 +1,17 @@
 // Require the express module
 const express = require("express");
-
-// Get the app object
+// module called path
+const path = require('path');
+// Getting  app object
 const app = express();
+// Setting up a port
 const HTTP_PORT = process.env.HTTP_PORT || 8080;
 
-app.get("/", (req, res) => 
-    {
-        res.send("Kavya Byju - 155142227"); 
-    });
-// Start the server
-app.listen(HTTP_PORT, () => console.log(`Server running at http://localhost:${HTTP_PORT}`));
+// HTML file and root route
+app.get("/", (req, res) => {
+    var htmlPath = path.join(__dirname, 'views', 'index.html');
+    res.sendFile(htmlPath); 
+});
+
+// Starting the server
+app.listen(HTTP_PORT, () => console.log(`Server running at http://localhost: ${HTTP_PORT}`));

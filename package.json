@@ -1,14 +1,25 @@
 {
+<<<<<<< HEAD
   "name": "assignment-2",
   "version": "1.0.0",
   "description": "as2",
   "main": "index.js",
+=======
+  "name": "web322_assignments",
+  "version": "1.0.0",
+  "description": "Assignments",
+  "main": "server.js",
+>>>>>>> 56c8268a57245aaa857f9222c0ca0dc71adc83e8
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kavya Byju",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "express": "^4.21.1"
+=======
+    "express": "^4.21.0"
+>>>>>>> 56c8268a57245aaa857f9222c0ca0dc71adc83e8
   }
 }

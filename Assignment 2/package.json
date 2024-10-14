@@ -1,0 +1,14 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "description": "as2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kavya Byju",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

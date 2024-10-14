@@ -1,34 +1,59 @@
 const fs = require("fs");
-const path = require("path");
 
 let articles = [];
 let categories = [];
 
 function initialize() {
     return new Promise((resolve, reject) => {
-        try {
-            const articlesData = fs.readFileSync(path.join(__dirname, "data", "articles.json"), "utf8");
-            articles = JSON.parse(articlesData);
+        
+        fs.readFile("./data/articles.json", "utf8", (err, data) => {
+            if (err) {
+                reject("unable to read articles file");
+                return;
+            }
+            try {
+                articles = JSON.parse(data); 
+            } catch (err) {
+                reject("error parsing articles data");
+                return;
+            }
 
             
-            const categoriesData = fs.readFileSync(path.join(__dirname, "data", "categories.json"), "utf8");
-            categories = JSON.parse(categoriesData);
+            fs.readFile("./data/categories.json", "utf8", (err, data) => {
+                if (err) {
+                    reject("unable to read categories file");
+                    return;
+                }
+                try {
+                    categories = JSON.parse(data); 
+                } catch (err) {
+                    reject("error parsing categories data");
+                    return;
+                }
 
-            console.log("Content service initialized successfully.");
-            resolve();
-        } catch (err) {
-            reject("Error initializing content service: " + err);
+                resolve(); 
+            });
+        });
+    });
+}
+
+function getAllArticles() {
+    return new Promise((resolve, reject) => {
+        if (articles.length > 0) {
+            resolve(articles); 
+        } else {
+            reject("no results returned"); 
         }
     });
 }
 
 function getPublishedArticles() {
     return new Promise((resolve, reject) => {
-        const publishedArticles = articles.filter(article => article.published === true);
+        const publishedArticles = articles.filter(article => article.published);
         if (publishedArticles.length > 0) {
-            resolve(publishedArticles);
+            resolve(publishedArticles); 
         } else {
-            reject("No published articles found");
+            reject("no results returned"); 
         }
     });
 }
@@ -36,15 +61,16 @@ function getPublishedArticles() {
 function getCategories() {
     return new Promise((resolve, reject) => {
         if (categories.length > 0) {
-            resolve(categories);
+            resolve(categories); 
         } else {
-            reject("No categories found");
+            reject("no results returned"); 
         }
     });
 }
 
 module.exports = {
     initialize,
+    getAllArticles,
     getPublishedArticles,
     getCategories
 };

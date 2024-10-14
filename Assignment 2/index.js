@@ -1,46 +1,44 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
 const app = express();
-const contentService = require("./content-service"); 
+const path = require('path');
+const contentService = require('./content-service');
 
-const HTTP_PORT = process.env.PORT || 4050; // Use a unique port number
-
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
-    res.redirect("/about");
+    res.send("Welcome to Kavya's Blogging!!n!");
 });
 
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "about.html"));
+    res.sendFile(path.join(__dirname, 'views', 'about.html'));
 });
 
 app.get("/articles", (req, res) => {
-    contentService.getPublishedArticles()
+    contentService.getAllArticles()
         .then((articles) => {
-            res.json(articles); 
+            res.json(articles);
         })
         .catch((err) => {
-            res.status(500).send("Error: " + err);
+            res.status(500).json({ message: err });
         });
 });
 
 app.get("/categories", (req, res) => {
     contentService.getCategories()
         .then((categories) => {
-            res.json(categories); 
+            res.json(categories);
         })
         .catch((err) => {
-            res.status(500).send("Error: " + err);
+            res.status(500).json({ message: err });
         });
 });
 
 contentService.initialize()
     .then(() => {
-        app.listen(HTTP_PORT, () => {
-            console.log("Express HTTP server listening on port", HTTP_PORT);
+        app.listen(4444, () => {
+            console.log("Server is running on port 4444");
         });
     })
     .catch((err) => {
-        console.log("Failed to initialize content service:", err);
+        console.error("Failed to initialize content service:", err);
     });
